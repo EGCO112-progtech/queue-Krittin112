@@ -6,14 +6,39 @@
 #include "Queue.h"
 
 int main(int argc , char **argv) {
+
   NodePtr headPtr=NULL;
-   NodePtr tailPtr=NULL;
-/* For struct Queue
+  NodePtr tailPtr=NULL;
+  int x;
+// 5 x 9 x 7 x 8 2 x
+  enqueue(&headPtr,&tailPtr,5);
+  enqueue(&headPtr,&tailPtr,6);
+  enqueue(&headPtr,&tailPtr,7);
+
+  x = dequeue(&headPtr,&tailPtr);
+  printf("%d\n",x);
+
+  x = dequeue(&headPtr,&tailPtr);
+  printf("%d\n",x);
+
+  x = dequeue(&headPtr,&tailPtr);
+  printf("%d\n",x);
+
+
+//For struct Queue
   Queue  q;
-   q. headPtr=NULL;
-   q.tailPtr=NULL;
-   q.size=0;
-*/
+  q.headPtr=NULL;
+  q.tailPtr=NULL;
+  q.size=0;
+  int i;
+
+  enqueue_struct(&q,7);
+  printf("%d\n",dequeue_struct(&q));
+  printf("%d\n",dequeue_struct(&q));
+  enqueue_struct(&q,8);
+  printf("%d\n",dequeue_struct(&q));
+
+/*
    int i,x;
    
 
@@ -27,5 +52,6 @@ int main(int argc , char **argv) {
            
         }
  }
+ */
   return 0;
 }
