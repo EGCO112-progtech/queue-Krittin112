@@ -43,9 +43,10 @@ int main(int argc , char **argv) {
 
  for(i=1;i<argc;i++){
         if(strcmp(argv[i],"x")==0){
-            x=dequeue_struct(&q);
-          if(x!=0) 
-            printf("dequeing %d\n",x);
+          if(q.size != 0){
+            x=dequeue_struct(&q); 
+            printf("dequeing %d\n",x);}
+          else dequeue_struct(&q);
         }
         else {
        enqueue_struct(&q, atoi(argv[i]));
