@@ -38,19 +38,23 @@ int main(int argc , char **argv) {
   enqueue_struct(&q,8);
   printf("%d\n",dequeue_struct(&q));*/
 
-   int i,x;
-   
+   int i,x,y;
 
  for(i=1;i<argc;i++){
         if(strcmp(argv[i],"x")==0){
           if(q.size != 0){
             x=dequeue_struct(&q); 
-            printf("dequeing %d\n",x);}
+            //printf("There are %d people left in queue\n",x);
+          }
           else dequeue_struct(&q);
         }
         else {
-       enqueue_struct(&q, atoi(argv[i]));
+       y = enqueue_struct(&q, atoi(argv[i]),atoi(argv[i+1]));
+       printf("My order is %d\n",y);
+       i++;
         }
  }
+ printf("======================================\n");
+ printf("There are %d people left in the queue\n",q.size);
   return 0;
 }
