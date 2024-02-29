@@ -6,13 +6,12 @@ typedef struct {
 }Queue;
 
 
-int enqueue_struct(Queue* q, int x, int y){
+void enqueue_struct(Queue* q, int x){
 
   Node *new_node=(Node*) malloc(sizeof(Node));
 
 if(new_node){ 
-  new_node->order_number=x;
-  new_node->quantity = y;
+  new_node->data=x;
     new_node->nextPtr=NULL;
   if(q->size==0) 
       q->headPtr = new_node;
@@ -20,70 +19,13 @@ if(new_node){
   q->tailPtr = new_node;
   q->size++;
  }
- return x;
 }
 
 
 int dequeue_struct(Queue *q){
    NodePtr t=q->headPtr;
-   int price;
-   int cash;
    if(t){
-    int value= t->order_number;
-    switch(value){
-      case 1:
-        printf("Ramen\n");
-        price = 100*t->quantity;
-        printf("You have to pay %d\n",price);
-        while(1)
-        {
-          printf("Cash:");
-          scanf("%d",&cash);
-          if(cash == price)
-          {
-            printf("Thankyou\n");
-            break;
-          }
-          else if(cash > price)
-            printf("Change is:%d",cash-price);
-        }
-        break;
-      case 2:
-        printf("Somtum\n");
-        price = 20*t->quantity;
-        printf("You have to pay %d\n",price);
-        while(1)
-        {
-          printf("Cash:");
-          scanf("%d",&cash);
-          if(cash == price)
-          {
-            printf("Thankyou\n");
-            break;
-          }
-          else if(cash > price)
-            printf("Change is:%d",cash-price);
-        }
-        break;
-      case 3:
-        printf("Fried Chicken\n");
-        price = 50*t->quantity;
-        printf("You have to pay %d\n",price);
-        while(1)
-        {
-          printf("Cash:");
-          scanf("%d",&cash);
-          if(cash == price)
-          {
-            printf("Thankyou\n");
-            break;
-          }
-          else if(cash > price)
-            printf("Change is:%d",cash-price);
-        }
-        break;
-      default : printf("No Food");
-    }
+    int value= t->data;
     q->headPtr = t->nextPtr;
     if(q->size==1)
       q->tailPtr == NULL;
@@ -94,4 +36,3 @@ int dequeue_struct(Queue *q){
    printf("Empty queue\n");
    return 0;
 }
-
